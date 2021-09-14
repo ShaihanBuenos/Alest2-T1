@@ -3,16 +3,16 @@ package src;
 
 import java.util.Collection;
 
-public class Compra implements Comparable{
+public class Compra implements Comparable<Compra>{
     private int quantidade;
     private int preco;
 
-    public Compra(int quantidade, int preco){
+    public Compra(int quantidade, int preco) {
         this.quantidade = quantidade;
         this.preco = preco;
     }
 
-    public int getQuantidade(){
+    public int getQuantidade() {
         return quantidade;
     }
 
@@ -20,7 +20,7 @@ public class Compra implements Comparable{
         this.quantidade = quantidade;
     }
 
-    public int getPreco(){
+    public int getPreco() {
         return preco;
     }
 
@@ -30,16 +30,24 @@ public class Compra implements Comparable{
 
     @Override
     public String toString() {
-        StringBuilder msg = new StringBuilder("Compra: \t");
-        msg.append("\nQuantidade -> \t" + getQuantidade());
-        msg.append("\nPreço -> \t" + getPreco());
+        StringBuilder msg = new StringBuilder("C");
+        msg.append(" " + getQuantidade());
+        msg.append( " " + getPreco());
         msg.append("\n");
 
         return msg.toString();
     }
 
     @Override
-    public int compareTo(Object o) {
-        return 0;
+    public int compareTo(Compra o) {
+        if(this.getPreco() < o.getPreco()){
+            return 1;}
+        else if(this.getPreco() == o.getPreco()){
+            return 0;
+        }
+        else {
+            return -1;
+        }
+
     }
 }
