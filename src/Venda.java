@@ -1,27 +1,28 @@
 package src;
 
 public class Venda {
-    private String quantidade;
-    private String preco;
+    private int quantidade;
+    private int preco;
+    private boolean comprado;
 
-    public Venda(String quantidade, String preco){
+    public Venda(int quantidade, int preco){
         this.quantidade = quantidade;
         this.preco = preco;
     }
 
-    public String getQuantidade(){
+    public int getQuantidade(){
         return quantidade;
     }
 
-    public void setQuantidade(String quantidade) {
+    public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
 
-    public String getPreco(){
+    public int getPreco(){
         return preco;
     }
 
-    public void setPreco(String preco) {
+    public void setPreco(int preco) {
         this.preco = preco;
     }
 
@@ -29,9 +30,17 @@ public class Venda {
     public String toString() {
         StringBuilder msg = new StringBuilder("Venda: \t");
         msg.append("\nQuantidade -> \t" + getQuantidade());
-        msg.append("\nCompania Aerea -> \t" + getPreco());
+        msg.append("\nPreço -> \t" + getPreco());
         msg.append("\n");
 
         return msg.toString();
+    }
+
+    public boolean isComprado() {
+        return comprado;
+    }
+
+    public void setComprado(boolean comprado) {
+        this.comprado = comprado;
     }
 }
