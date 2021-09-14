@@ -39,6 +39,13 @@ public class Venda implements Comparable<Venda>{
 
     @Override
     public int compareTo(Venda o) {
-        return Integer.compare(this.getPreco(), o.getPreco());
+        if(this.getPreco() < o.getPreco() && o.getQuantidade() != 0){
+            return -1;}
+        else if(this.getPreco() == o.getPreco()){
+            return 0;
+        }
+        else {
+            return 1;
+        }
     }
 }

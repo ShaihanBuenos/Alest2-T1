@@ -37,7 +37,7 @@ public class Main {
                 line = br.readLine();
             }
             System.out.println("Compras restantes:\n" + service.naoCompradas() + "\nVendas Restantes:\n" + service.naoVendidas() + "\n");
-
+            System.out.println(service.operacao());
 
         } catch (IOException e) {
             System.out.println("Nem ideia do que isto significa! " + e.getMessage());

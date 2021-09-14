@@ -1,8 +1,5 @@
 package src;
 
-
-import java.util.Collection;
-
 public class Compra implements Comparable<Compra>{
     private int quantidade;
     private int preco;
@@ -40,7 +37,7 @@ public class Compra implements Comparable<Compra>{
 
     @Override
     public int compareTo(Compra o) {
-        if(this.getPreco() < o.getPreco()){
+        if(this.getPreco() < o.getPreco() && o.getQuantidade() != 0){
             return 1;}
         else if(this.getPreco() == o.getPreco()){
             return 0;
