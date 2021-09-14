@@ -18,11 +18,11 @@ public class Service {
     }
 
     public void comprei(Venda venda) {
-        compraList.stream().findFirst().ifPresent(compra -> compra.setVendidas(true));
+        //compraList.stream().findFirst().ifPresent(compra -> compra.setVendidas(true));
     }
 
     public List<Compra> naoVendidas(){
-        return compraList.stream().filter(compra -> !compra.isVendidas()).collect(Collectors.toList());
+        return compraList.stream().filter(compra -> compra.getQuantidade() > 0).collect(Collectors.toList());
     }
 
 }

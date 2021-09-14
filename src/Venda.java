@@ -3,7 +3,6 @@ package src;
 public class Venda {
     private int quantidade;
     private int preco;
-    private boolean comprado;
 
     public Venda(int quantidade, int preco){
         this.quantidade = quantidade;
@@ -34,13 +33,5 @@ public class Venda {
         msg.append("\n");
 
         return msg.toString();
-    }
-
-    public boolean isComprado() {
-        return comprado;
-    }
-
-    public void setComprado(boolean comprado) {
-        this.comprado = comprado;
     }
 }

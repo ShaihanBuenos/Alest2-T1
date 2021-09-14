@@ -6,9 +6,6 @@ import java.util.Collection;
 public class Compra implements Comparable{
     private int quantidade;
     private int preco;
-    private boolean vendidas;
-
-    public Compra(){}
 
     public Compra(int quantidade, int preco){
         this.quantidade = quantidade;
@@ -44,13 +41,5 @@ public class Compra implements Comparable{
     @Override
     public int compareTo(Object o) {
         return 0;
-    }
-
-    public boolean isVendidas() {
-        return vendidas;
-    }
-
-    public void setVendidas(boolean vendidas) {
-        this.vendidas = vendidas;
     }
 }
