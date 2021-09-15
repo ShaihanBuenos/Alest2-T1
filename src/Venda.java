@@ -1,6 +1,5 @@
 package src;
 
-import static java.lang.Math.max;
 
 public class Venda implements Comparable<Venda>{
     private int quantidade;
@@ -24,17 +23,7 @@ public class Venda implements Comparable<Venda>{
         return preco;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder msg = new StringBuilder("V");
-        msg.append(" " + getQuantidade());
-        msg.append(" " + getPreco());
-        msg.append("\n");
-
-        return msg.toString();
-    }
-
-    @Override
+  @Override
     public int compareTo(Venda o) {
         if(o.getQuantidade() > 0 && this.getPreco() < o.getPreco()){
             return -1;}

@@ -1,6 +1,6 @@
 package src;
 
-public class Compra implements Comparable<Compra>{
+public class Compra implements Comparable<Compra> {
     private int quantidade;
     private int preco;
 
@@ -22,23 +22,12 @@ public class Compra implements Comparable<Compra>{
     }
 
     @Override
-    public String toString() {
-        StringBuilder msg = new StringBuilder("C");
-        msg.append(" " + getQuantidade());
-        msg.append( " " + getPreco());
-        msg.append("\n");
-
-        return msg.toString();
-    }
-
-    @Override
     public int compareTo(Compra o) {
-        if(o.getQuantidade() > 0 && this.getPreco() > o.getPreco()){
-            return -1;}
-        else if(this.getPreco() < o.getPreco()){
+        if (o.getQuantidade() > 0 && this.getPreco() > o.getPreco()) {
+            return -1;
+        } else if (this.getPreco() < o.getPreco()) {
             return 1;
-        }
-        else {
+        } else {
             return 0;
         }
 

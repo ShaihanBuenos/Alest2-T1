@@ -3,9 +3,7 @@ package src;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
+import java.sql.Timestamp;
 
 public class Main {
 
@@ -13,6 +11,8 @@ public class Main {
 
         Service service = new Service();
         String path = "C:\\Users\\laura_ribeiro\\IdeaProjects\\Alest2-T1\\casosDeTeste\\trinta_enunciado.txt";
+        Long start = System.currentTimeMillis();
+
 
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
             int value1, value2;
@@ -30,19 +30,17 @@ public class Main {
                     value2 = Integer.parseInt(fields[2]);
                     service.addVenda(value1, value2);
 
-                } else {
-                    System.out.println("Padrão não aceito!");
-
                 }
 
                 line = br.readLine();
             }
+            Long end = System.currentTimeMillis();
             System.out.println("Lucro: " + service.getLucro() + "\nAções Negociadas: " + service.getTransacoes()
-                    + "\nCompras Restantes: " + service.naoCompradas() + "\n Vendas Restantes: " + service.naoVendidas());
+                    + "\nCompras Restantes: " + service.naoCompradas() + "\nVendas Restantes: " + service.naoVendidas()
+                    + "\nTempo: " + (end-start));
 
-            //System.out.println("Compras restantes:\n" + service.naoCompradas() + "\nVendas Restantes:\n" + service.naoVendidas() + "\n");
         } catch (IOException e) {
-            System.out.println("Nem ideia do que isto significa! " + e.getMessage());
+            System.out.println(e.getMessage());
         }
 
     }
