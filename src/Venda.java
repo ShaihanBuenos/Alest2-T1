@@ -7,6 +7,7 @@ public class Venda implements Comparable<Venda>{
     private int preco;
 
     public Venda(int quantidade, int preco){
+
         this.quantidade = quantidade;
         this.preco = preco;
     }
@@ -23,10 +24,6 @@ public class Venda implements Comparable<Venda>{
         return preco;
     }
 
-    public void setPreco(int preco) {
-        this.preco = preco;
-    }
-
     @Override
     public String toString() {
         StringBuilder msg = new StringBuilder("V");
@@ -39,13 +36,13 @@ public class Venda implements Comparable<Venda>{
 
     @Override
     public int compareTo(Venda o) {
-        if(this.getPreco() < o.getPreco() && o.getQuantidade() != 0){
+        if(o.getQuantidade() > 0 && this.getPreco() < o.getPreco()){
             return -1;}
-        else if(this.getPreco() == o.getPreco()){
-            return 0;
+        else if(this.getPreco() > o.getPreco() || o.getQuantidade() >= 0){
+            return 1;
         }
         else {
-            return 1;
+            return 0;
         }
     }
 }

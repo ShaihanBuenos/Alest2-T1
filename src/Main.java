@@ -12,7 +12,7 @@ public class Main {
     public static void main(String[] args) {
 
         Service service = new Service();
-        String path = "C:\\Users\\laura_ribeiro\\IdeaProjects\\Alest2-T1\\casosDeTeste\\trinta.txt";
+        String path = "C:\\Users\\laura_ribeiro\\IdeaProjects\\Alest2-T1\\casosDeTeste\\trinta_enunciado.txt";
 
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
             int value1, value2;
@@ -36,9 +36,9 @@ public class Main {
 
                 line = br.readLine();
             }
-            System.out.println("Compras restantes:\n" + service.naoCompradas() + "\nVendas Restantes:\n" + service.naoVendidas() + "\n");
-            System.out.println(service.operacao());
 
+            System.out.println(service.operacao());
+            //System.out.println("Compras restantes:\n" + service.naoCompradas() + "\nVendas Restantes:\n" + service.naoVendidas() + "\n");
         } catch (IOException e) {
             System.out.println("Nem ideia do que isto significa! " + e.getMessage());
         }

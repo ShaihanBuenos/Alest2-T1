@@ -1,55 +1,73 @@
 package src;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.PriorityQueue;
 import java.util.stream.Collectors;
 
-import static java.lang.Math.max;
-
 public class Service {
-    int lucro;
+    private int lucro;
 
-    private PriorityQueue<Compra> compraList = new PriorityQueue<>();
-    private PriorityQueue<Venda> vendaList = new PriorityQueue<>();
+    private List<Compra> compraList = new ArrayList<>();
+    private List<Venda> vendaList = new ArrayList<>();
 
     public void addVenda(int qtd, int valor) {
         vendaList.add(new Venda(qtd, valor));
-
     }
 
     public void addCompra(int qtd, int valor) {
         compraList.add(new Compra(qtd, valor));
     }
 
-    public List<Venda> naoVendidas(){
+    public List<Venda> naoVendidas() {
         return vendaList.stream().filter(compra -> compra.getQuantidade() > 0).collect(Collectors.toList());
     }
 
-    public List<Compra> naoCompradas(){
+    public List<Compra> naoCompradas() {
         return compraList.stream().filter(compra -> compra.getQuantidade() > 0).collect(Collectors.toList());
     }
-    public String operacao(){
-        int index = max(compraList.size(), vendaList.size());
-        for (int i = 0; i < index; i++){
-        int qty =compraList.peek().getQuantidade() - vendaList.peek().getQuantidade();
-        if ( qty > 0)
-        {
-            lucro += vendaList.peek().getQuantidade() * (compraList.peek().getPreco() - vendaList.peek().getPreco());
-            compraList.peek().setQuantidade(qty);
-            vendaList.peek().setQuantidade(0);
 
+    public String operacao() {
+        compraList.sort(Compra::compareTo);
+        vendaList.sort(Venda::compareTo);
+        int x = 0;
+        int y = 0;
+        while (compraList.get(y).getPreco() > vendaList.get(x).getPreco()) {
+
+
+            if (compraList.get(y).getQuantidade() > vendaList.get(x).getQuantidade() && compraList.get(y).getPreco() > vendaList.get(x).getPreco()) {
+                lucro += vendaList.get(x).getQuantidade() * (compraList.get(y).getPreco() - vendaList.get(x).getPreco());
+                compraList.get(y).setQuantidade(vendaList.get(x).getQuantidade());
+                vendaList.get(x).setQuantidade(0);
+                if (compraList.get(y).getQuantidade() == 0) {
+                    y++;
+                } else if (vendaList.get(x).getQuantidade() == 0) {
+                    x++;
+                }
+
+            } else if (vendaList.get(x).getQuantidade() > compraList.get(y).getQuantidade() && compraList.get(y).getPreco() > vendaList.get(x).getPreco()) {
+                lucro += compraList.get(y).getQuantidade() * (compraList.get(y).getPreco() - vendaList.get(x).getPreco());
+                vendaList.get(x).setQuantidade(compraList.get(y).getQuantidade());
+                compraList.get(y).setQuantidade(0);
+
+                if (compraList.get(y).getQuantidade() == 0) {
+                    y++;
+                }
+                if (vendaList.get(y).getQuantidade() == 0) {
+                    x++;
+                }
+            } else if (vendaList.get(x).getQuantidade() == compraList.get(y).getQuantidade() && compraList.get(y).getPreco() > vendaList.get(x).getPreco()) {
+                lucro += compraList.get(y).getQuantidade() * (compraList.get(y).getPreco() - vendaList.get(x).getPreco());
+                vendaList.get(x).setQuantidade(0);
+                compraList.get(y).setQuantidade(0);
+                if (compraList.get(y).getQuantidade() == 0) {
+                    y++;
+                }
+                if (vendaList.get(x).getQuantidade() == 0) {
+                    x++;
+                }
+            }
         }
-        else if ( qty < 0)
-        {
-            lucro += -(qty) * (compraList.peek().getPreco() - vendaList.peek().getPreco());
-            compraList.peek().setQuantidade(compraList.peek().getQuantidade() + qty);
-            vendaList.peek().setQuantidade(vendaList.peek().getQuantidade() + qty);
-        }
-            return "" + compraList;
-        }
-       return "";
+        return "" + compraList + vendaList;
     }
 
 }
