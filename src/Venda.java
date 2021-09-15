@@ -38,7 +38,7 @@ public class Venda implements Comparable<Venda>{
     public int compareTo(Venda o) {
         if(o.getQuantidade() > 0 && this.getPreco() < o.getPreco()){
             return -1;}
-        else if(this.getPreco() > o.getPreco() || o.getQuantidade() >= 0){
+        else if(this.getPreco() > o.getPreco()){
             return 1;
         }
         else {

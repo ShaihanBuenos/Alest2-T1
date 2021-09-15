@@ -35,7 +35,7 @@ public class Compra implements Comparable<Compra>{
     public int compareTo(Compra o) {
         if(o.getQuantidade() > 0 && this.getPreco() > o.getPreco()){
             return -1;}
-        else if(this.getPreco() < o.getPreco() || o.getQuantidade() >= 0){
+        else if(this.getPreco() < o.getPreco()){
             return 1;
         }
         else {

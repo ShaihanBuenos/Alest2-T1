@@ -32,12 +32,14 @@ public class Main {
 
                 } else {
                     System.out.println("Padrão não aceito!");
+
                 }
 
                 line = br.readLine();
             }
+            System.out.println("Lucro: " + service.getLucro() + "\nAções Negociadas: " + service.getTransacoes()
+                    + "\nCompras Restantes: " + service.naoCompradas() + "\n Vendas Restantes: " + service.naoVendidas());
 
-            System.out.println(service.operacao());
             //System.out.println("Compras restantes:\n" + service.naoCompradas() + "\nVendas Restantes:\n" + service.naoVendidas() + "\n");
         } catch (IOException e) {
             System.out.println("Nem ideia do que isto significa! " + e.getMessage());
