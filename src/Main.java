@@ -10,8 +10,9 @@ public class Main {
     public static void main(String[] args) {
 
         Service service = new Service();
-        String path = "C:\\Users\\laura_ribeiro\\IdeaProjects\\Alest2-T1\\casosDeTeste\\trinta_enunciado.txt";
-        Long start = System.currentTimeMillis();
+        //String path = "C:\\Users\\laura_ribeiro\\IdeaProjects\\Alest2-T1\\casosDeTeste\\trinta_enunciado.txt";
+        String path = "C:\\Users\\Shaihan\\Desktop\\Alest2-T1\\casosDeTeste\\trinta_enunciado.txt";
+        long start = System.currentTimeMillis();
 
 
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
@@ -34,10 +35,10 @@ public class Main {
 
                 line = br.readLine();
             }
-            Long end = System.currentTimeMillis();
+            long end = System.currentTimeMillis();
             System.out.println("Lucro: " + service.getLucro() + "\nAções Negociadas: " + service.getTransacoes()
                     + "\nCompras Restantes: " + service.naoCompradas() + "\nVendas Restantes: " + service.naoVendidas()
-                    + "\nTempo: " + (end-start));
+                    + "\nTempo em milissegundos: " + (end-start));
 
         } catch (IOException e) {
             System.out.println(e.getMessage());
